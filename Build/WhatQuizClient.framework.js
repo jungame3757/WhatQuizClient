@@ -1283,10 +1283,10 @@ function dbg(text) {
 // === Body ===
 
 var ASM_CONSTS = {
-  7723792: () => { Module['emscripten_get_now_backup'] = performance.now; },  
- 7723847: ($0) => { performance.now = function() { return $0; }; },  
- 7723895: ($0) => { performance.now = function() { return $0; }; },  
- 7723943: () => { performance.now = Module['emscripten_get_now_backup']; }
+  7723808: () => { Module['emscripten_get_now_backup'] = performance.now; },  
+ 7723863: ($0) => { performance.now = function() { return $0; }; },  
+ 7723911: ($0) => { performance.now = function() { return $0; }; },  
+ 7723959: () => { performance.now = Module['emscripten_get_now_backup']; }
 };
 
 
@@ -8531,7 +8531,7 @@ var ASM_CONSTS = {
   
           try {
               firebase.auth().signInAnonymously().then(function (result) {
-                  window.unityInstance.SendMessage(parsedObjectName, parsedCallback, "Success: signed up for " + result);
+                  window.unityInstance.SendMessage(parsedObjectName, parsedCallback, result.user.uid);
               }).catch(function (error) {
                   window.unityInstance.SendMessage(parsedObjectName, parsedFallback, JSON.stringify(error, Object.getOwnPropertyNames(error)));
               });
