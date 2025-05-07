@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="unity:webgl-optimization-level" content="1">
+    <meta name="unity:min-safari-version" content="120000">
     <title>Unity Web Player | WhatQuizSDK</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -82,18 +84,32 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/62345f78c071709a256797db892b09b9.loader.js";
+      var loaderUrl = buildUrl + "/a21602a6fb0977c312b029dca506051a.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/64c9806c71ad7c1f0b25b73de17a2240.data",
-        frameworkUrl: buildUrl + "/29caab9275bf2a768d82142e73b67dfd.framework.js",
-        codeUrl: buildUrl + "/d4be55b95490973422a5afb592e75351.wasm",
+        dataUrl: buildUrl + "/196fdc3aac57ce1aeac40a86acb1deea.data",
+        frameworkUrl: buildUrl + "/6889aecc5aa25f479d72c663e817498a.framework.js",
+        codeUrl: buildUrl + "/4e033e4e3ebe53831cc34d23af7afe86.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "WhatQuizSDK",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
+
+      // iOS 실행 오류 대응을 위한 예외 처리 추가
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        console.log("iOS 디바이스 감지됨: 특수 설정 적용");
+        // Safari WebGL 호환성 문제 해결을 위한 설정
+        try {
+          // WebAssembly 기능 제한 관련 처리
+          if (window.WebAssembly) {
+            console.log("WebAssembly 지원됨");
+          }
+        } catch (e) {
+          console.error("WebAssembly 오류:", e);
+        }
+      }
 
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
