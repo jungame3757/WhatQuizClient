@@ -54,7 +54,11 @@ function createUnityInstance(canvas, config, onProgress) {
       preserveDrawingBuffer: false,
       powerPreference: 2,
     },
+<<<<<<<< HEAD:Build/45055b2323e89121d0bef4d6af88f0c6.loader.js
     wasmFileSize: 97652094,
+========
+    wasmFileSize: 98985096,
+>>>>>>>> parent of a9bfe40 (2차 완성):Build/WhatQuizClient.loader.js
     cacheControl: function (url) {
       return (url == Module.dataUrl || url.match(/\.bundle/)) ? "must-revalidate" : "no-store";
     },
